@@ -1,0 +1,50 @@
+<?xml version="1.0"?>
+<project name="HW07" basedir="." default="run">
+    
+    <property environment="env"/>
+    <property name="JUNIT" value="${env.JUNIT}"/>
+    <property name="src" value="src"/>
+    <property name="bin" value="bin"/>
+    
+    
+    <path id="classpath">
+        <pathelement path="${env.JUNIT}"/>
+        <pathelement path="${bin}" />
+    </path>
+    
+    <target name="cleanup">
+        <delete dir="${bin}"/>
+    </target>
+    
+    
+    <echo message="Build directory process"/>
+    <target name="sourcedir" >
+        <mkdir dir="${bin}"/>
+    </target>
+    
+    <target name="compile" depends="sourcedir" >
+        <javac  srcdir="${src}" destdir="${bin}" includeantruntime="true">
+        </javac>
+    </target>
+    
+    <target name="all compile" depends="compile">
+    </target>
+    
+    <target name="run" depends="all compile">
+        <echo message="Main Method"/>
+        <echo message="HW07"/>
+        <java classname="edu.umb.cs.cs681.hw07.File">
+        </java>
+    </target>
+    
+    <target name="clean">
+        <delete dir="bin"/>
+        <delete dir="test/bin"/>
+    </target>
+    
+    
+    
+    
+</project>
+
+
